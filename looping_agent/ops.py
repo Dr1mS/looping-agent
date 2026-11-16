@@ -204,9 +204,47 @@ TOOLS = {
 }
 
 
-def call(name: str, args: dict):
+def work_dir() -> str:
+    """Folder used for relative paths.
+
+    MCP clients start the server in their own folder (Claude Desktop on Linux uses
+    /usr/lib/claude-desktop, which is read-only), so relative paths must not depend
+    on the current directory. Set LOOPING_DIR to choose another folder.
+    """
+    d = os.environ.get("LOOPING_DIR")
+    if not d:
+        docs = os.path.join(os.path.expanduser("~"), "Documents")
+        d = os.path.join(docs if os.path.isdir(docs) else os.path.expanduser("~"), "Looping")
+    return os.path.abspath(os.path.expanduser(d))
+
+
+def resolve(path: str) -> str:
+    p = os.path.expanduser(os.path.expandvars(path.strip().strip('"')))
+    if not os.path.isabs(p):
+        os.makedirs(work_dir(), exist_ok=True)
+        p = os.path.join(work_dir(), p)
+    return os.path.abspath(p)
+
+
+def call(name: str, args: dict, use_work_dir: bool = False):
+    """Run one tool. With use_work_dir (MCP), relative paths go to work_dir()."""
     fn = TOOLS[name][0]
-    return fn(**args)
+    args = dict(args)
+    for k in ("path", "out"):
+        if args.get(k):
+            args[k] = resolve(args[k]) if use_work_dir else os.path.abspath(os.path.expanduser(args[k]))
+    try:
+        res = fn(**args)
+    except PermissionError as e:
+        raise PermissionError(
+            f"no write access to {e.filename or args.get('path')}. Use a path in a folder you "
+            f"own, or a relative path (MCP: saved in {work_dir()})") from None
+    except FileNotFoundError as e:
+        raise FileNotFoundError(f"file not found: {e.filename or args.get('path')}. "
+                                f"(MCP: relative paths are read from {work_dir()})") from None
+    if isinstance(res, dict) and "path" in args:
+        res.setdefault("path", args["path"])
+    return res
 
 
 def to_text(res) -> str:

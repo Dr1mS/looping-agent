@@ -59,7 +59,16 @@ Si Claude Desktop ne trouve pas `looping-mcp`, mets le chemin complet donné par
 `where looping-mcp` (Windows) ou `which looping-mcp` (macOS/Linux).
 
 Quitte complètement Claude Desktop, puis relance-le. Les outils `loo_*` apparaissent dans le menu
-des outils. Donne toujours des **chemins complets** vers les fichiers `.loo`.
+des outils.
+
+**Où sont les fichiers ?** Claude Desktop lance le serveur dans son propre dossier, souvent en
+lecture seule. Un chemin relatif (`biblio.loo`) est donc enregistré dans le dossier de travail
+`~/Documents/Looping` (créé au besoin). Chemins complets et `~/...` marchent aussi. Chaque résultat
+donne le chemin complet du fichier à ouvrir dans Looping. Pour changer de dossier :
+
+```json
+"looping": { "command": "looping-mcp", "env": { "LOOPING_DIR": "C:\\Users\\moi\\MCD" } }
+```
 
 ### Claude Code
 

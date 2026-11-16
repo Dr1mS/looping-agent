@@ -160,6 +160,9 @@ def sql_ddl(model_dict: dict, dialect: str = "generic") -> str:
     deferred: list[str] = []
     for t in tables:
         created.add(t["name"])
+        if not t["columns"]:
+            out.append(f"-- {t['name']}: no attribute, table skipped (add an identifier)")
+            continue
         rows = []
         for c in t["columns"]:
             rows.append(f"   {q(c['name'])} {_sqltype(c['type'], dialect)}"
