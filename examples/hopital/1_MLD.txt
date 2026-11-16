@@ -1,0 +1,17 @@
+Patient(#idPatient, nom, prenom, dateNaissance, numeroSecu, idAssurance*, numeroContrat)
+Medecin(#idMedecin, nom, specialite, telephone, idService*, idMedecin_superviser*)
+Service(#idService, libelle, etage, idMedecin*)
+Chambre(#idChambre, numero, tarifJour, idService*)
+Lit(#idLit, type, idChambre*)
+Consultation(#idConsultation, dateConsult, motif, idPatient*, idMedecin*)
+Ordonnance(#idOrdonnance, dateEmission, idConsultation*)
+Medicament(#idMedicament, nomCommercial, prix)
+Infirmier(#idInfirmier, nom, grade, idService*)
+Examen(#idExamen, typeExamen, resultat, idLabo*, idConsultation*)
+Laboratoire(#idLabo, raisonSociale, ville)
+Assurance(#idAssurance, nom, tauxRemboursement)
+occuper(#idPatient*, #idLit*, dateEntree, dateSortie)
+comporter(#idOrdonnance*, #idMedicament*, posologie, dureeJours)
+administrer(#idInfirmier*, #idPatient*, #idMedicament*, dateHeure, dose)
+
+# = primary key, * = foreign key

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+*.bak
+*.loo.bak
+.claude/
+# Looping itself is not redistributed here
+Looping.zip
+*.exe
+LoopingImage.jpg

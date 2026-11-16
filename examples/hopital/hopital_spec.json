@@ -1,0 +1,529 @@
+{
+ "entities": [
+  {
+   "name": "Patient",
+   "attributes": [
+    {
+     "name": "idPatient",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "nom",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "prenom",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "dateNaissance",
+     "type": "DATE"
+    },
+    {
+     "name": "numeroSecu",
+     "type": "VARCHAR(15)"
+    }
+   ],
+   "x": 100,
+   "y": 650
+  },
+  {
+   "name": "Medecin",
+   "attributes": [
+    {
+     "name": "idMedecin",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "nom",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "specialite",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "telephone",
+     "type": "VARCHAR(20)"
+    }
+   ],
+   "x": 750,
+   "y": 100
+  },
+  {
+   "name": "Service",
+   "attributes": [
+    {
+     "name": "idService",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "libelle",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "etage",
+     "type": "INT"
+    }
+   ],
+   "x": 1400,
+   "y": 100
+  },
+  {
+   "name": "Chambre",
+   "attributes": [
+    {
+     "name": "idChambre",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "numero",
+     "type": "VARCHAR(10)"
+    },
+    {
+     "name": "tarifJour",
+     "type": "DECIMAL(8,2)"
+    }
+   ],
+   "x": 2050,
+   "y": 100
+  },
+  {
+   "name": "Lit",
+   "attributes": [
+    {
+     "name": "idLit",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "type",
+     "type": "VARCHAR(50)"
+    }
+   ],
+   "x": 2050,
+   "y": 650
+  },
+  {
+   "name": "Consultation",
+   "attributes": [
+    {
+     "name": "idConsultation",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "dateConsult",
+     "type": "DATE"
+    },
+    {
+     "name": "motif",
+     "type": "TEXT"
+    }
+   ],
+   "x": 750,
+   "y": 650
+  },
+  {
+   "name": "Ordonnance",
+   "attributes": [
+    {
+     "name": "idOrdonnance",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "dateEmission",
+     "type": "DATE"
+    }
+   ],
+   "x": 750,
+   "y": 1200
+  },
+  {
+   "name": "Medicament",
+   "attributes": [
+    {
+     "name": "idMedicament",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "nomCommercial",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "prix",
+     "type": "DECIMAL(10,2)"
+    }
+   ],
+   "x": 1400,
+   "y": 1200
+  },
+  {
+   "name": "Infirmier",
+   "attributes": [
+    {
+     "name": "idInfirmier",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "nom",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "grade",
+     "type": "VARCHAR(50)"
+    }
+   ],
+   "x": 1400,
+   "y": 650
+  },
+  {
+   "name": "Examen",
+   "attributes": [
+    {
+     "name": "idExamen",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "typeExamen",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "resultat",
+     "type": "TEXT"
+    }
+   ],
+   "x": 100,
+   "y": 1200
+  },
+  {
+   "name": "Laboratoire",
+   "attributes": [
+    {
+     "name": "idLabo",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "raisonSociale",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "ville",
+     "type": "VARCHAR(50)"
+    }
+   ],
+   "x": 100,
+   "y": 100
+  },
+  {
+   "name": "Assurance",
+   "attributes": [
+    {
+     "name": "idAssurance",
+     "type": "INT",
+     "pk": true
+    },
+    {
+     "name": "nom",
+     "type": "VARCHAR(50)"
+    },
+    {
+     "name": "tauxRemboursement",
+     "type": "DECIMAL(5,2)"
+    }
+   ],
+   "x": 2050,
+   "y": 1200
+  }
+ ],
+ "associations": [
+  {
+   "name": "appartenir",
+   "attributes": [],
+   "x": 1075,
+   "y": 170
+  },
+  {
+   "name": "diriger",
+   "attributes": [],
+   "x": 1075,
+   "y": 330
+  },
+  {
+   "name": "contenir",
+   "attributes": [],
+   "x": 1725,
+   "y": 250
+  },
+  {
+   "name": "equiper",
+   "attributes": [],
+   "x": 2150,
+   "y": 450
+  },
+  {
+   "name": "occuper",
+   "attributes": [
+    {
+     "name": "dateEntree",
+     "type": "DATE"
+    },
+    {
+     "name": "dateSortie",
+     "type": "DATE"
+    }
+   ],
+   "x": 1300,
+   "y": 1000
+  },
+  {
+   "name": "consulter",
+   "attributes": [],
+   "x": 480,
+   "y": 750
+  },
+  {
+   "name": "realiser",
+   "attributes": [],
+   "x": 850,
+   "y": 480
+  },
+  {
+   "name": "prescrire",
+   "attributes": [],
+   "x": 850,
+   "y": 1020
+  },
+  {
+   "name": "comporter",
+   "attributes": [
+    {
+     "name": "posologie",
+     "type": "VARCHAR(255)"
+    },
+    {
+     "name": "dureeJours",
+     "type": "INT"
+    }
+   ],
+   "x": 1175,
+   "y": 1300
+  },
+  {
+   "name": "affecter",
+   "attributes": [],
+   "x": 1500,
+   "y": 520
+  },
+  {
+   "name": "administrer",
+   "attributes": [
+    {
+     "name": "dateHeure",
+     "type": "DATETIME"
+    },
+    {
+     "name": "dose",
+     "type": "VARCHAR(50)"
+    }
+   ],
+   "x": 1100,
+   "y": 880
+  },
+  {
+   "name": "analyser",
+   "attributes": [],
+   "x": 200,
+   "y": 500
+  },
+  {
+   "name": "demander",
+   "attributes": [],
+   "x": 520,
+   "y": 1150
+  },
+  {
+   "name": "couvrir",
+   "attributes": [
+    {
+     "name": "numeroContrat",
+     "type": "VARCHAR(30)"
+    }
+   ],
+   "x": 1900,
+   "y": 1550
+  },
+  {
+   "name": "superviser",
+   "attributes": [],
+   "x": 1050,
+   "y": 30
+  }
+ ],
+ "links": [
+  {
+   "entity": "Medecin",
+   "association": "appartenir",
+   "card": "1,1"
+  },
+  {
+   "entity": "Service",
+   "association": "appartenir",
+   "card": "0,n"
+  },
+  {
+   "entity": "Service",
+   "association": "diriger",
+   "card": "1,1"
+  },
+  {
+   "entity": "Medecin",
+   "association": "diriger",
+   "card": "0,1"
+  },
+  {
+   "entity": "Chambre",
+   "association": "contenir",
+   "card": "1,1"
+  },
+  {
+   "entity": "Service",
+   "association": "contenir",
+   "card": "1,n"
+  },
+  {
+   "entity": "Lit",
+   "association": "equiper",
+   "card": "1,1"
+  },
+  {
+   "entity": "Chambre",
+   "association": "equiper",
+   "card": "1,n"
+  },
+  {
+   "entity": "Patient",
+   "association": "occuper",
+   "card": "0,n"
+  },
+  {
+   "entity": "Lit",
+   "association": "occuper",
+   "card": "0,n"
+  },
+  {
+   "entity": "Consultation",
+   "association": "consulter",
+   "card": "1,1"
+  },
+  {
+   "entity": "Patient",
+   "association": "consulter",
+   "card": "0,n"
+  },
+  {
+   "entity": "Consultation",
+   "association": "realiser",
+   "card": "1,1"
+  },
+  {
+   "entity": "Medecin",
+   "association": "realiser",
+   "card": "0,n"
+  },
+  {
+   "entity": "Ordonnance",
+   "association": "prescrire",
+   "card": "1,1"
+  },
+  {
+   "entity": "Consultation",
+   "association": "prescrire",
+   "card": "0,n"
+  },
+  {
+   "entity": "Ordonnance",
+   "association": "comporter",
+   "card": "1,n"
+  },
+  {
+   "entity": "Medicament",
+   "association": "comporter",
+   "card": "0,n"
+  },
+  {
+   "entity": "Infirmier",
+   "association": "affecter",
+   "card": "1,1"
+  },
+  {
+   "entity": "Service",
+   "association": "affecter",
+   "card": "1,n"
+  },
+  {
+   "entity": "Infirmier",
+   "association": "administrer",
+   "card": "0,n"
+  },
+  {
+   "entity": "Patient",
+   "association": "administrer",
+   "card": "0,n"
+  },
+  {
+   "entity": "Medicament",
+   "association": "administrer",
+   "card": "0,n"
+  },
+  {
+   "entity": "Examen",
+   "association": "analyser",
+   "card": "1,1"
+  },
+  {
+   "entity": "Laboratoire",
+   "association": "analyser",
+   "card": "0,n"
+  },
+  {
+   "entity": "Examen",
+   "association": "demander",
+   "card": "1,1"
+  },
+  {
+   "entity": "Consultation",
+   "association": "demander",
+   "card": "0,n"
+  },
+  {
+   "entity": "Patient",
+   "association": "couvrir",
+   "card": "0,1"
+  },
+  {
+   "entity": "Assurance",
+   "association": "couvrir",
+   "card": "0,n"
+  },
+  {
+   "entity": "Medecin",
+   "association": "superviser",
+   "card": "0,1"
+  },
+  {
+   "entity": "Medecin",
+   "association": "superviser",
+   "card": "0,n"
+  }
+ ]
+}

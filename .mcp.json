@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "looping": {
+      "command": "python3",
+      "args": ["-m", "looping_agent", "mcp"],
+      "env": { "PYTHONPATH": "." }
+    }
+  }
+}
